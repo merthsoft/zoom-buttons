@@ -30,14 +30,14 @@ public class ZoomButtons : Mod
         });
     }
 
-    public override string SettingsCategory() => "Zoom Buttons";
+    public override string SettingsCategory() => "Merthsoft.ZoomButtons.ZoomButtons".Translate();
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
         var list = new Listing_Standard();
         list.Begin(inRect);
 
-        list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate() + " " + Settings.ZoomStep.ToString("0.0"));
+        list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate(Settings.ZoomStep.ToString("0.0")));
         Settings.ZoomStep = list.Slider(Settings.ZoomStep, 0.5f, 25f);
 
         list.End();

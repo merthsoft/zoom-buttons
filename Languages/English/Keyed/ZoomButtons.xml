@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+  <Merthsoft.ZoomButtons.ZoomButtons>Zoom Buttons</Merthsoft.ZoomButtons.ZoomButtons>
   <Merthsoft.ZoomButtons.ZoomIn>Zoom In</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>Zoom Out</Merthsoft.ZoomButtons.ZoomOut>
-  <Merthsoft.ZoomButtons.ZoomStep>Zoom step amount:</Merthsoft.ZoomButtons.ZoomStep>
+  <Merthsoft.ZoomButtons.ZoomStep>Zoom step amount: {0}</Merthsoft.ZoomButtons.ZoomStep>
 </LanguageData>
