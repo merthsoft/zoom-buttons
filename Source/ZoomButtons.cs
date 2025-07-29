@@ -7,11 +7,15 @@ namespace Merthsoft.ZoomButtons;
 [StaticConstructorOnStartup]
 public class ZoomButtons : Mod
 {
+    public static ZoomButtonsSettings Settings;
+
     private static Texture2D ZoomInTexture;
     private static Texture2D ZoomOutTexture;
     
     public ZoomButtons(ModContentPack content) : base(content)
     {
+        Settings = GetSettings<ZoomButtonsSettings>();
+
         var harmony = new Harmony("Merthsoft.ZoomButtons");
         harmony.Patch(
             AccessTools.Method(typeof(RimWorld.TimeControls), "DoTimeControlsGUI"),
@@ -23,6 +27,19 @@ public class ZoomButtons : Mod
             ZoomInTexture = ContentFinder<Texture2D>.Get("UI/Icons/ZoomIn");
             ZoomOutTexture = ContentFinder<Texture2D>.Get("UI/Icons/ZoomOut");
         });
+    }
+
+    public override string SettingsCategory() => "Zoom Buttons";
+
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        Listing_Standard list = new Listing_Standard();
+        list.Begin(inRect);
+
+        list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate() + Settings.ZoomStep.ToString("0.0"));
+        Settings.ZoomStep = list.Slider(Settings.ZoomStep, 0.5f, 25f);
+
+        list.End();
     }
 
     private static void DrawZoomButtons(Rect timerRect)
@@ -45,12 +62,12 @@ public class ZoomButtons : Mod
     private static void ZoomIn()
     {
         CameraDriver camera = Find.CameraDriver;
-        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize - 1f));
+        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize - Settings.ZoomStep));
     }
 
     private static void ZoomOut()
     {
         CameraDriver camera = Find.CameraDriver;
-        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize + 1f));
+        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize + Settings.ZoomStep));
     }
 }

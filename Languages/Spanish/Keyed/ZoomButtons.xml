@@ -2,4 +2,5 @@
 <LanguageData>
   <Merthsoft.ZoomButtons.ZoomIn>Acercar</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>Alejar</Merthsoft.ZoomButtons.ZoomOut>
+  <Merthsoft.ZoomButtons.ZoomStep>Cantidad de paso de zoom:</Merthsoft.ZoomButtons.ZoomStep>
 </LanguageData>

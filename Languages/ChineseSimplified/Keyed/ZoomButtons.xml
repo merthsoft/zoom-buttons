@@ -2,4 +2,5 @@
 <LanguageData>
   <Merthsoft.ZoomButtons.ZoomIn>放大</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>缩小</Merthsoft.ZoomButtons.ZoomOut>
+  <Merthsoft.ZoomButtons.ZoomStep>缩放步长：</Merthsoft.ZoomButtons.ZoomStep>
 </LanguageData>
