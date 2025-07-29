@@ -18,9 +18,10 @@ public class ZoomButtons : Mod
 
         var harmony = new Harmony("Merthsoft.ZoomButtons");
         harmony.Patch(
-            AccessTools.Method(typeof(RimWorld.TimeControls), "DoTimeControlsGUI"),
+            original: AccessTools.Method(typeof(RimWorld.PlaySettings), "DoMapControls"),
             postfix: new HarmonyMethod(typeof(ZoomButtons), nameof(DrawZoomButtons))
         );
+
 
         LongEventHandler.ExecuteWhenFinished(() =>
         {
@@ -33,7 +34,7 @@ public class ZoomButtons : Mod
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
-        Listing_Standard list = new Listing_Standard();
+        var list = new Listing_Standard();
         list.Begin(inRect);
 
         list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate() + " " + Settings.ZoomStep.ToString("0.0"));
@@ -42,32 +43,18 @@ public class ZoomButtons : Mod
         list.End();
     }
 
-    private static void DrawZoomButtons(Rect timerRect)
+    private static void DrawZoomButtons(WidgetRow row)
     {
-        var buttonSize = 24f;
-        var padding = 4f;
+        if (row.ButtonIcon(ZoomOutTexture, tooltip: "Merthsoft.ZoomButtons.ZoomOut".Translate()))
+            Zoom(Settings.ZoomStep);
 
-        var zoomInRect = new Rect(timerRect.x, timerRect.yMax + padding, buttonSize, buttonSize);
-        if (Widgets.ButtonImage(zoomInRect, ZoomInTexture, doMouseoverSound: false))
-            ZoomIn();
-
-        var zoomOutRect = new Rect(zoomInRect.xMax + padding, zoomInRect.y, buttonSize, buttonSize);
-        if (Widgets.ButtonImage(zoomOutRect, ZoomOutTexture, doMouseoverSound: false))
-            ZoomOut();
-
-        TooltipHandler.TipRegion(zoomInRect, "Merthsoft.ZoomButtons.ZoomIn".Translate());
-        TooltipHandler.TipRegion(zoomOutRect, "Merthsoft.ZoomButtons.ZoomOut".Translate());
+        if (row.ButtonIcon(ZoomInTexture, tooltip: "Merthsoft.ZoomButtons.ZoomIn".Translate()))
+            Zoom(-Settings.ZoomStep);   
     }
 
-    private static void ZoomIn()
+    private static void Zoom(float amount)
     {
-        CameraDriver camera = Find.CameraDriver;
-        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize - Settings.ZoomStep));
-    }
-
-    private static void ZoomOut()
-    {
-        CameraDriver camera = Find.CameraDriver;
-        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize + Settings.ZoomStep));
+        var camera = Find.CameraDriver;
+        camera.SetRootSize(camera.config.sizeRange.ClampToRange(camera.RootSize + amount));
     }
 }
