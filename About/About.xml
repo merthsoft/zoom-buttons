@@ -1,0 +1,10 @@
+<ModMetaData>
+  <name>Zoom Buttons</name>
+  <url>https://github.com/merthsoft/zoom-buttons</url>
+  <author>merthsoft</author>
+  <packageId>Merthsoft.ZoomButtons</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Adds map zoom buttons to main UI.</description>
+</ModMetaData>
