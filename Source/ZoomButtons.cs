@@ -36,7 +36,7 @@ public class ZoomButtons : Mod
         Listing_Standard list = new Listing_Standard();
         list.Begin(inRect);
 
-        list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate() + Settings.ZoomStep.ToString("0.0"));
+        list.Label("Merthsoft.ZoomButtons.ZoomStep".Translate() + " " + Settings.ZoomStep.ToString("0.0"));
         Settings.ZoomStep = list.Slider(Settings.ZoomStep, 0.5f, 25f);
 
         list.End();
