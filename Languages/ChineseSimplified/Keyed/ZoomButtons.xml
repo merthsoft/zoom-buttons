@@ -3,4 +3,6 @@
   <Merthsoft.ZoomButtons.ZoomIn>放大</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>缩小</Merthsoft.ZoomButtons.ZoomOut>
   <Merthsoft.ZoomButtons.ZoomStep>缩放步长： {0}</Merthsoft.ZoomButtons.ZoomStep>
+  <Merthsoft.ZoomButtons.ButtonsInPlaySettings>在时间播放设置中显示缩放按钮（无缩放）</Merthsoft.ZoomButtons.ButtonsInPlaySettings>
+<Merthsoft.ZoomButtons.ButtonsScale>缩放按钮大小：{0}</Merthsoft.ZoomButtons.ButtonsScale>
 </LanguageData>

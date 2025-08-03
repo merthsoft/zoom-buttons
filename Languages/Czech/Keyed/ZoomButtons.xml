@@ -4,4 +4,6 @@
   <Merthsoft.ZoomButtons.ZoomIn>Zoom In</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>Zoom Out</Merthsoft.ZoomButtons.ZoomOut>
   <Merthsoft.ZoomButtons.ZoomStep>Velikost kroku přiblížení: {0}</Merthsoft.ZoomButtons.ZoomStep>
+  <Merthsoft.ZoomButtons.ButtonsInPlaySettings>Zobrazit tlačítka přiblížení v nastavení časového přehrávání (bez změny měřítka)</Merthsoft.ZoomButtons.ButtonsInPlaySettings>
+  <Merthsoft.ZoomButtons.ButtonsScale>Měřítko tlačítek přiblížení: {0}</Merthsoft.ZoomButtons.ButtonsScale>
 </LanguageData>

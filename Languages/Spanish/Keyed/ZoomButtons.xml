@@ -3,4 +3,6 @@
   <Merthsoft.ZoomButtons.ZoomIn>Acercar</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>Alejar</Merthsoft.ZoomButtons.ZoomOut>
   <Merthsoft.ZoomButtons.ZoomStep>Cantidad de paso de zoom: {0}</Merthsoft.ZoomButtons.ZoomStep>
+  <Merthsoft.ZoomButtons.ButtonsInPlaySettings>Mostrar botones de zoom en la configuración de reproducción del tiempo (sin escala)</Merthsoft.ZoomButtons.ButtonsInPlaySettings>
+  <Merthsoft.ZoomButtons.ButtonsScale>Escala de los botones de zoom: {0}</Merthsoft.ZoomButtons.ButtonsScale>
 </LanguageData>

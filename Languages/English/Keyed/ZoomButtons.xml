@@ -4,4 +4,6 @@
   <Merthsoft.ZoomButtons.ZoomIn>Zoom In</Merthsoft.ZoomButtons.ZoomIn>
   <Merthsoft.ZoomButtons.ZoomOut>Zoom Out</Merthsoft.ZoomButtons.ZoomOut>
   <Merthsoft.ZoomButtons.ZoomStep>Zoom step amount: {0}</Merthsoft.ZoomButtons.ZoomStep>
+  <Merthsoft.ZoomButtons.ButtonsInPlaySettings>Show zoom buttons in time play settings (no scaling))</Merthsoft.ZoomButtons.ButtonsInPlaySettings>
+  <Merthsoft.ZoomButtons.ButtonsScale>Zoom button scale: {0}</Merthsoft.ZoomButtons.ButtonsScale>
 </LanguageData>
