@@ -63,16 +63,15 @@ public class ZoomButtons : Mod
         list.End();
     }
 
-
     public static void DrawZoomButtonsInPlaySettings(WidgetRow row)
     {
         if (!Settings.ButtonsInPlaySettings)
             return;
 
-        if (row.ButtonIcon(ZoomOutTexture, tooltip: "Merthsoft.ZoomButtons.ZoomOut".Translate()))
+        if (row.HoldButton(ZoomOutTexture, tooltip: "Merthsoft.ZoomButtons.ZoomOut".Translate()))
             Zoom(Settings.ZoomStep);
 
-        if (row.ButtonIcon(ZoomInTexture, tooltip: "Merthsoft.ZoomButtons.ZoomIn".Translate()))
+        if (row.HoldButton(ZoomInTexture, tooltip: "Merthsoft.ZoomButtons.ZoomIn".Translate()))
             Zoom(-Settings.ZoomStep);
     }
 
@@ -80,8 +79,6 @@ public class ZoomButtons : Mod
     {
         if (Settings.ButtonsInPlaySettings)
             return;
-
-        Log.Message($"leftX: {leftX} width: {width} curBaseY: {curBaseY}");
 
         var buttonSize = ZoomButtonSize;
         var spacing = 4f;
@@ -98,7 +95,7 @@ public class ZoomButtons : Mod
 
         var buttonRect = new Rect(x, y, buttonSize, buttonSize);
 
-        if (Widgets.ButtonImage(buttonRect, ZoomInTexture, false, "Merthsoft.ZoomButtons.ZoomIn".Translate()))
+        if (HoldButton.DoHoldButton(buttonRect, ZoomInTexture, tooltip: "Merthsoft.ZoomButtons.ZoomIn".Translate()))
             Zoom(-Settings.ZoomStep);
 
         if (fitsOneRow)
@@ -106,12 +103,11 @@ public class ZoomButtons : Mod
         else
             buttonRect.y += buttonSize + spacing;
 
-        if (Widgets.ButtonImage(buttonRect, ZoomOutTexture, false, "Merthsoft.ZoomButtons.ZoomOut".Translate()))
+        if (HoldButton.DoHoldButton(buttonRect, ZoomOutTexture, tooltip: "Merthsoft.ZoomButtons.ZoomOut".Translate()))
             Zoom(Settings.ZoomStep);
 
         Widgets.EndGroup();
     }
-
 
     private static void Zoom(float amount)
     {
@@ -119,13 +115,15 @@ public class ZoomButtons : Mod
         {
             var camera = Find.CameraDriver;
             var clampedValue = camera.config.sizeRange.ClampToRange(camera.RootSize + amount);
-            camera.SetRootSize(clampedValue);
+            if (clampedValue != camera.RootSize && camera.config.sizeRange.Includes(clampedValue))
+                camera.SetRootSize(clampedValue);
         }
         else
         {
             var driver = Find.WorldCameraDriver;
             var clampedValue = Mathf.Clamp(driver.altitude + 2f*amount, WorldCameraDriver.MinAltitude, 1100f);
-            DesiredAltitudeField.SetValue(driver, clampedValue);
+            if (clampedValue != driver.altitude && clampedValue >= WorldCameraDriver.MinAltitude && clampedValue <= 1100f)
+                DesiredAltitudeField.SetValue(driver, clampedValue);
         }
     }
 }
